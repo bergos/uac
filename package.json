@@ -1,0 +1,24 @@
+{
+	"name": "uac",
+	"version": "0.1.0",
+	"description": "Node.js Universal Access Control implementation",
+	"main": "uac.js",
+	"scripts": {
+		"test": "mocha"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/bergos/uac.git"
+	},
+	"keywords": [
+		"Universal Access Control",
+		"Access Control"
+	],
+	"author": "Thomas Bergwinkl",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/bergos/uac/issues"
+	},
+	"homepage": "https://github.com/bergos/uac",
+	"readmeFilename": "README.md"
+}

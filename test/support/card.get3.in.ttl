@@ -1,0 +1,6 @@
+@prefix cert: <http://www.w3.org/ns/auth/cert#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
+<https://www.bergnet.org/people/bergi/card#me>
+	foaf:name "Thomas Bergwinkl";
+	foaf:nick "bergi".

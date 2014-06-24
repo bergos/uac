@@ -1,0 +1,12 @@
+@prefix s: <http://schema.org/>.
+@base <https://localhost/blog>.
+
+
+<#2012-03-26-test> s:comment <#2012-03-27-test-comment-2>.
+
+
+<#2012-03-27-test-comment-2>
+	a s:UserComments;
+	s:creator <https://localhost/card#friend1>;
+	s:commentTime "2012-03-27T20:00:00Z";
+	s:commentText "Test".

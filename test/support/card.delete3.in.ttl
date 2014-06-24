@@ -1,0 +1,9 @@
+@prefix cert: <http://www.w3.org/ns/auth/cert#>.
+@prefix foaf: <http://xmlns.com/foaf/0.1/>.
+
+<https://www.bergnet.org/people/bergi/card#me>
+	foaf:name "Thomas Bergwinkl";
+	cert:key [ a cert:RSAPublicKey;
+		cert:exponent 65537;
+		cert:modulus "b026a3ce39ab0c602ee6212df6f7f85455ddc05ba880ba77c297ba690bfc9125bc9bb97be095424db558d1957aa481a23f3c71fe718c74b3c1b4387e791e779428ee46517236669f6f371858214e7ce84c482b7c5223add7b56391e1dac9f0fc1e5fc2821b7eb8f265b19407776feb89b55fafa7f6c5f40928af67092e9bc6318c83c28c4ed6fbc0011f24af12226712c0ac5b117161bfe3a2bc83f0ebc23ac8bbca1f64088a274ecf26d59d593369acb24a650308f27333194dcfa83716191f5f3364ab66dd27e9347b1c94c005c26c73a62077d585b708de7d02ecd8e9caa5ec56173aebf745ae78551c50387752724090d6e98e6ae2d0cfeeca67102f2bef"^^<http://www.w3.org/2001/XMLSchema#hexBinary>
+	].

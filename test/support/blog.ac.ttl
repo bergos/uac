@@ -1,0 +1,103 @@
+@prefix s: <http://schema.org/>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>.
+@prefix uac: <http://ns.bergnet.org/uac/0.1/universal-access-control#>.
+
+
+_:auth1 a uac:Authorization;
+	uac:agent <https://www.bergnet.org/people/bergi/card#test1>;
+	uac:hasRole
+		_:roleReadBlog,
+		_:roleWriteBlogComment
+		.
+
+_:roleReadBlog a uac:Role;
+	uac:access [ a uac:TripleAuthorization;
+		uac:mode uac:Read;
+		uac:filter [ a uac:SimpleFilter;
+			uac:predicate rdf:type;
+			uac:object s:Blog;
+		], [ a uac:SimpleFilter;
+			uac:predicate s:name;
+			uac:predicate s:description;
+		];
+	], [ a uac:TripleAuthorization;
+		uac:mode uac:Read;
+		uac:filter [ a uac:SimpleFilter;
+			uac:predicate s:blogPost;
+		];
+		uac:children [
+			uac:access [ a uac:TripleAuthorization;
+				uac:mode uac:Read;
+				uac:filter [ a uac:SimpleFilter;
+					uac:predicate rdf:type;
+					uac:object s:BlogPosting;
+				], [ a uac:SimpleFilter;
+					uac:predicate s:datePublished;
+					uac:predicate s:author;
+					uac:predicate s:headline;
+					uac:predicate s:articleBody;
+				];
+			], [ a uac:TripleAuthorization;
+				uac:mode uac:Read;
+				uac:filter [ a uac:SimpleFilter;
+					uac:predicate s:comment;
+				];
+				uac:children [
+					uac:access [ a uac:TripleAuthorization;
+						uac:mode uac:Read;
+						uac:filter [ a uac:SimpleFilter;
+							uac:predicate rdf:type;
+							uac:object s:UserComments;
+						], [ a uac:SimpleFilter;
+							uac:predicate s:creator;
+							uac:predicate s:commentTime;
+							uac:predicate s:commentText;
+						];
+					];
+				];
+			];
+		];
+	].
+
+
+_:roleWriteBlogComment a uac:Role;
+	uac:access [ a uac:TripleAuthorization;
+#		uac:mode uac:Read;
+		uac:filter [ a uac:SimpleFilter;
+			uac:predicate s:blogPost;
+		];
+		uac:children [
+			uac:access [ a uac:TripleAuthorization;
+				uac:mode uac:Write;
+				uac:filter [ a uac:SimpleFilter;
+					uac:predicate s:comment;
+				];
+				uac:children [
+					uac:access [ a uac:TripleAuthorization;
+						uac:mode uac:Write;
+						uac:filter [ a uac:SimpleFilter;
+							uac:predicate rdf:type;
+							uac:object s:UserComments;
+						], [ a uac:SimpleFilter;
+							uac:predicate s:commentTime;
+							uac:predicate s:commentText;
+						];
+					], [ a uac:TripleAuthorization;
+						uac:mode uac:Write;
+						uac:filter [ a uac:SimpleFilter;
+							uac:predicate s:creator;
+						];
+#						uac:filter [ a uac:VariableFilter;
+#							uac:predicate [
+#								uac:value s:creator;
+#							];
+#							uac:object [
+#								uac:variable "agent";
+#							];
+#						];
+#						uac:required "true";
+					];
+				];
+			];
+		];
+	].
